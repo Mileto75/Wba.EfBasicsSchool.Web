@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Wba.EfBasics.Web.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<SchoolDbContext>(
+    options => options.UseSqlServer(builder
+    .Configuration.GetConnectionString("SchoolDb"))
+    );
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
