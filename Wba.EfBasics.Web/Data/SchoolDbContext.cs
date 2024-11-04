@@ -15,6 +15,30 @@ namespace Wba.EfBasics.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //database configuration
+            modelBuilder.HasDefaultSchema("DboSchool");
+            //entity configuration
+            //course
+            modelBuilder.Entity<Course>()
+                .Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+            modelBuilder.Entity<Student>()
+                .Property(c => c.Firstname)
+                .IsRequired()
+                .HasMaxLength(150);
+            modelBuilder.Entity<Student>()
+                .Property(c => c.Lastname)
+                .IsRequired()
+                .HasMaxLength(150);
+            modelBuilder.Entity<Teacher>()
+                .Property(c => c.Firstname)
+                .IsRequired()
+                .HasMaxLength(150);
+            modelBuilder.Entity<Teacher>()
+                .Property(c => c.Lastname)
+                .IsRequired()
+                .HasMaxLength(150);
             base.OnModelCreating(modelBuilder);
         }
     }
