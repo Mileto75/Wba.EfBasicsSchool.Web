@@ -16,6 +16,6 @@ namespace Wba.EfBasics.Core.Entities
         public int TeacherId { get; set; }
         //many to many with student
         //course has many students
-        public ICollection<Student> Students { get; set; }
+        public ICollection<CourseStudent> Students { get; set; }
     }
 }

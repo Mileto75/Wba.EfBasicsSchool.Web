@@ -13,7 +13,7 @@ namespace Wba.EfBasics.Core.Entities
         public string Lastname { get; set; }
         //many to many with courses
         //student has many courses
-        public ICollection<Course> Courses { get; set; }
+        public ICollection<CourseStudent> Courses { get; set; }
         public Address Address { get; set; }
         public int? AddressId { get; set; }
     }

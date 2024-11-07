@@ -10,6 +10,7 @@ namespace Wba.EfBasics.Web.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<CourseStudent> CourseStudents { get; set; }
         public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
         {
         }
@@ -40,6 +41,9 @@ namespace Wba.EfBasics.Web.Data
                 .Property(c => c.Lastname)
                 .IsRequired()
                 .HasMaxLength(150);
+            //combined multiple key for CourseStudent
+            modelBuilder.Entity<CourseStudent>()
+                .HasKey(cs => new { cs.StudentId, cs.CourseId });
             base.OnModelCreating(modelBuilder);
         }
     }
