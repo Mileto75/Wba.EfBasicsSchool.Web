@@ -12,5 +12,11 @@ namespace Wba.EfBasics.Core.Entities
         public string Firstname { get; set; }
         
         public string Lastname { get; set; }
+        //one to many by convention teacher => courses
+        //navigation properties
+        public ICollection<Course> Courses { get; set; }
+
+        public Address Address { get; set; }
+        public int? AddressId { get; set; }
     }
 }
