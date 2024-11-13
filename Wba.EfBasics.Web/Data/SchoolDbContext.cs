@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Wba.EfBasics.Core.Entities;
+using Wba.EfBasics.Web.Data.Seeding;
 
 namespace Wba.EfBasics.Web.Data
 {
@@ -40,6 +41,8 @@ namespace Wba.EfBasics.Web.Data
                 .Property(c => c.Lastname)
                 .IsRequired()
                 .HasMaxLength(150);
+            //Seed
+            Seeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }
