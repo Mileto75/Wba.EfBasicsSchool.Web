@@ -31,7 +31,7 @@ namespace Wba.EfBasics.Web.Data.Seeding
             //courses
             var courses = new Course[]
             {
-                new Course { Id = 1, Name = "Web Backend",TeacherId = 2,Created = DateTime.Now},
+                new Course { Id = 1, Name = "Web Backend",TeacherId = 2,Created = DateTime.Parse("2026-12-01")},
                 new Course { Id = 2, Name = "Web Frontend Advanced",TeacherId = 1,Created = DateTime.Now},
             };
             //CoursesStudent
