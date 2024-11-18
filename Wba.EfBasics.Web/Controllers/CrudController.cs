@@ -63,5 +63,35 @@ namespace Wba.EfBasics.Web.Controllers
             await _schoolDbContext.SaveChangesAsync();
             return Content("Added!");
         }
+        public async Task<IActionResult> Related()
+        {
+            //add course with teacher and address
+            var address = new Address 
+            {
+                FullAdress = "Molenstraat 15, 8370 Blankenberge",
+                Created = DateTime.Now,
+            };
+            var teacher = new Teacher 
+            {
+                Firstname = "Siegfried",
+                Lastname = "Derdeyn",
+                Address = address,
+                Created = DateTime.Now
+            };
+            //the course
+            var course = new Course 
+            {
+                Teacher = teacher,
+                Name = "Mobile Development",
+                Created = DateTime.Now,
+                Students = await _schoolDbContext.Students.ToListAsync()
+            };
+            
+            //add to change tracker
+            _schoolDbContext.Courses.Add(course);
+            //savechanges to database
+            await _schoolDbContext.SaveChangesAsync();
+            return Content("Added");
+        }
     }
 }
