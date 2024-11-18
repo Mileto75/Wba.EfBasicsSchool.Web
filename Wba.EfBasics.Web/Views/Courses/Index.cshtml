@@ -1,0 +1,35 @@
+﻿@model CoursesIndexViewModel
+
+<div class="row">
+    <div class="col col-lg-3">
+        <a class="btn btn-success" asp-controller="Courses" asp-action="Add">
+            New course
+        </a>
+    </div>
+</div>
+<div class="row">
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Action</th>
+        </tr>
+        @foreach(var course in Model.Courses)
+        { 
+            <tr>
+                <td>@course.Value</td>
+                <td>
+                    <a class="btn btn-outline-success" asp-controller="Courses" asp-action="Info"
+                       asp-route-id="@course.Id">Info</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" asp-controller="Courses" asp-action="Edit"
+                       asp-route-id="@course.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-danger" asp-controller="Courses" asp-action="Delete"
+                       asp-route-id="@course.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table> 
+</div>
