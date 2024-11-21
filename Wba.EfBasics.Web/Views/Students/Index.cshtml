@@ -1,0 +1,23 @@
+﻿@model StudentsIndexViewModel
+
+<div class="row">
+    <div class="col col-lg-3 mb-2">
+        <a asp-controller="Students" asp-action="Add"
+           class="btn btn-primary">Add</a>
+    </div>
+</div>
+<div class="row">
+    @foreach (var student in Model.Students)
+    {
+        <div class="col col-lg-3 mx-auto text-center border border-1 rounded rounded-2">
+            <p>@student.Value</p>
+            <p>
+                <a asp-controller="Students" asp-action="Edit"
+                   class="btn btn-outline-secondary" asp-route-id="@student.Id">Edit</a>
+
+                <a asp-controller="Students" asp-action="ConfirmDelete"
+                   class="btn btn-outline-danger" asp-route-id="@student.Id">Delete</a>
+            </p>
+        </div>
+    }
+</div>
