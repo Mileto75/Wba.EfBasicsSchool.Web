@@ -1,0 +1,17 @@
+﻿@model StudentsAddViewModel
+<div class="form-group">
+    <label asp-for="Firstname"></label>
+    <input asp-for="Firstname" class="form-control">
+    <span asp-validation-for="Firstname" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Lastname"></label>
+    <input asp-for="Lastname" class="form-control">
+    <span asp-validation-for="Lastname" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CoursesId"></label>
+    <select class="form-select" asp-items="@Model.Courses"
+            asp-for="CoursesId"></select>
+    <span asp-validation-for="Lastname" class="text-danger"></span>
+</div>

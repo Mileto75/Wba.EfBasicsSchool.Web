@@ -166,5 +166,46 @@ namespace Wba.EfBasics.Web.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public async Task<IActionResult> ConfirmDelete(int id)
+        {
+            //check if exists
+            var deleteStudent = await _schoolDbContext.Students
+                .FirstOrDefaultAsync(s => s.Id == id);
+            if(deleteStudent == null) 
+            {
+                return NotFound();
+            }
+            //fill the model
+            var studentsDeleteViewModel = new StudentsDeleteViewModel
+            {
+                Id = deleteStudent.Id,
+                Value = $"{deleteStudent.Firstname} {deleteStudent.Lastname}"
+            };
+            return View(studentsDeleteViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(StudentsDeleteViewModel studentsDeleteViewModel)
+        {
+            //get the student
+            var deleteStudent = await _schoolDbContext
+                   .Students.FirstOrDefaultAsync(s => s.Id == studentsDeleteViewModel.Id);
+            if (deleteStudent == null)
+            {
+                return NotFound();
+            }
+            //delete the student => mark in change tracker
+            _schoolDbContext.Students.Remove(deleteStudent);
+            try
+            {
+                await _schoolDbContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                Console.WriteLine(dbUpdateException.Message);
+                return RedirectToAction(nameof(Index));
+            }
+        }
     }
 }

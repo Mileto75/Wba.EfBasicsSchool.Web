@@ -1,0 +1,10 @@
+﻿@model StudentsDeleteViewModel
+
+<form asp-controller="Students" asp-action="Delete" method="post">
+    <div class="alert alert-danger" role="alert">
+        Are you sure you want to delete student: @Model.Value?
+        <a asp-controller="Students" asp-action="Index" class="btn btn-success">No</a>
+        <button type="submit" class="btn btn-danger">Yes</button>
+    </div>
+    <input asp-for="Id" />
+</form>

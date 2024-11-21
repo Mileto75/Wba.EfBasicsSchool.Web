@@ -9,7 +9,7 @@
 <div class="row">
     @foreach (var student in Model.Students)
     {
-        <div class="col col-lg-3 mx-auto text-center border border-1 rounded rounded-2">
+        <div class="col col-lg-3 text-center border border-1 rounded rounded-2 m-2">
             <p>@student.Value</p>
             <p>
                 <a asp-controller="Students" asp-action="Edit"
