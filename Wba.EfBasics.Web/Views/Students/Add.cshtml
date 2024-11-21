@@ -1,0 +1,26 @@
+﻿@model StudentsAddViewModel
+
+    <div class="row">
+        <div class="col col-lg-5 mx-auto border border-1">
+            <h5>Add new student</h5>
+            <form asp-controller="Students" asp-action="Add" method="post">
+                <div class="form-group">
+                    <label asp-for="Firstname"></label>
+                    <input asp-for="Firstname" class="form-control">
+                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lastname"></label>
+                    <input asp-for="Lastname" class="form-control">
+                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CoursesId"></label>
+                    <select class="form-select" asp-items="@Model.Courses"
+                            asp-for="CoursesId"></select>
+                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>
+            </form>
+        </div>
+    </div>

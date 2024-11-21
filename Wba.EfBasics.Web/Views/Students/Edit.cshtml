@@ -1,0 +1,27 @@
+﻿@model StudentsEditViewModel
+<div class="row">
+    <div class="col col-lg-5 mx-auto border border-1">
+        <h5>Edit student</h5>
+        <form asp-controller="Students" asp-action="Edit" method="post">
+            <div class="form-group">
+                <label asp-for="Firstname"></label>
+                <input asp-for="Firstname" class="form-control">
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname"></label>
+                <input asp-for="Lastname" class="form-control">
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoursesId"></label>
+                <select class="form-select" asp-items="@Model.Courses"
+                        asp-for="CoursesId"></select>
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <input asp-for="Id" />
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Edit</button>
+        </form>
+    </div>
+</div>
+
