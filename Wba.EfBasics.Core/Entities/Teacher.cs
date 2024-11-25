@@ -18,5 +18,6 @@ namespace Wba.EfBasics.Core.Entities
 
         public Address Address { get; set; }
         public int? AddressId { get; set; }
+        public string Image { get; set; }
     }
 }
