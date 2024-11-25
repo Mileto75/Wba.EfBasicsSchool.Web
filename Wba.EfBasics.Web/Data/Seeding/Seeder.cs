@@ -31,8 +31,8 @@ namespace Wba.EfBasics.Web.Data.Seeding
             //courses
             var courses = new Course[]
             {
-                new Course { Id = 1, Name = "Web Backend",TeacherId = 2,Created = DateTime.Parse("2026-12-01")},
-                new Course { Id = 2, Name = "Web Frontend Advanced",TeacherId = 1,Created = DateTime.Now},
+                new Course { Id = 1, Name = "Web Backend",Created = DateTime.Parse("2026-12-01")},
+                new Course { Id = 2, Name = "Web Frontend Advanced",Created = DateTime.Now},
             };
             //CoursesStudent
             var coursesStudents = new[]
@@ -45,6 +45,14 @@ namespace Wba.EfBasics.Web.Data.Seeding
                 new {CoursesId = 2, StudentsId = 2 },
                 new {CoursesId = 2, StudentsId = 3 },
                 new {CoursesId = 2, StudentsId = 4 },
+            };
+            //CoursesStudent
+            var coursesTeachers = new[]
+            {
+                new {CoursesId = 1, TeachersId = 1 },
+                new {CoursesId = 1, TeachersId = 2 },
+                new {CoursesId = 2, TeachersId = 1 },
+                new {CoursesId = 2, TeachersId = 2 },
             };
 
             //call the hasdata methods
@@ -59,6 +67,9 @@ namespace Wba.EfBasics.Web.Data.Seeding
             //CourseStudents
             modelBuilder.Entity($"{nameof(Course)}{nameof(Student)}")
                 .HasData(coursesStudents);
+            //Coursesteachers
+            modelBuilder.Entity($"{nameof(Course)}{nameof(Teacher)}")
+                .HasData(coursesTeachers);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Wba.EfBasics.Web.Controllers
             var course = await _schoolDbContext
                 .Courses
                 .Include(c => c.Students)
-                .Include(c => c.Teacher)
+                //.Include(c => c.Teacher)
                 .ThenInclude(t => t.Address)
                 .FirstOrDefaultAsync(c => c.Id == id);
             
@@ -81,7 +81,7 @@ namespace Wba.EfBasics.Web.Controllers
             //the course
             var course = new Course 
             {
-                Teacher = teacher,
+                //Teacher = teacher,
                 Name = "Mobile Development",
                 Created = DateTime.Now,
                 Students = await _schoolDbContext.Students.ToListAsync()

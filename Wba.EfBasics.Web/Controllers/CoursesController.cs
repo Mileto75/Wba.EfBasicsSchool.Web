@@ -39,7 +39,7 @@ namespace Wba.EfBasics.Web.Controllers
         {
             //get the course
             var course = await _schoolDbContext.Courses
-                .Include(c => c.Teacher)
+                //.Include(c => c.Teachers)
                 .FirstOrDefaultAsync(c => c.Id == id);
             _schoolDbContext?.Courses.Update(course);
             //check if null
@@ -55,11 +55,11 @@ namespace Wba.EfBasics.Web.Controllers
                     Id = course.Id,
                     Value = course.Name,
                 },
-                Teacher = new BaseViewModel 
-                {
-                    Id = course.Teacher.Id,
-                    Value = $"{course.Teacher.Firstname} {course.Teacher.Lastname}"
-                }
+                //Teacher = new BaseViewModel 
+                //{
+                //    Id = course.Teacher.Id,
+                //    Value = $"{course.Teacher.Firstname} {course.Teacher.Lastname}"
+                //}
             };
             //pass to the view
             return View(coursesInfoViewModel);

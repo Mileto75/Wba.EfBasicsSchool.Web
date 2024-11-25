@@ -11,11 +11,7 @@ namespace Wba.EfBasics.Core.Entities
         public string Name { get; set; }
         //define the teacher relation one teacher
         //navigation property
-        public Teacher Teacher { get; set; }
-        //unshadowed foreign key property
-        public int TeacherId { get; set; }
-        //many to many with student
-        //course has many students
+        public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Student> Students { get; set; }
     }
 }
