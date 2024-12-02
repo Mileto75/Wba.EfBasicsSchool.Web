@@ -29,6 +29,10 @@
                     <a class="btn btn-outline-danger" asp-controller="Courses" asp-action="Delete"
                        asp-route-id="@course.Id">Delete</a>
                 </td>
+                <td>
+                    <a class="btn btn-outline-warning" asp-controller="Cart" asp-action="Add"
+                       asp-route-id="@course.Id">Add to cart</a>
+                </td>
             </tr>
         }
     </table> 
