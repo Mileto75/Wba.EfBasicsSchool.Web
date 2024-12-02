@@ -20,8 +20,22 @@ namespace Wba.EfBasics.Web.Controllers
         public IActionResult Index()
         {
             //shows cart from session
-
-            return View();
+            //create viewmodel
+            var cartIndexViewModel = new CartIndexViewModel
+            {
+                Items = new List<CartItemModel>(),
+            };
+            //check if cart in session
+            if (HttpContext.Session.Keys.Contains("Cart"))
+            {
+                //get the list of items from session
+                cartIndexViewModel.Items
+                    = JsonConvert
+                    .DeserializeObject<List<CartItemModel>>
+                    (HttpContext.Session.GetString("Cart"));
+            }
+            //pass to the view
+            return View(cartIndexViewModel);
         }
         [HttpGet]
         public async Task<IActionResult> Add(int id)

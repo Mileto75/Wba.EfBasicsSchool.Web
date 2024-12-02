@@ -1,0 +1,28 @@
+﻿@model CartIndexViewModel
+
+<div class="row">
+    <div class="col-lg-8">
+        <table class="table table-hover">
+            <tr>
+                <th>Course</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+            @foreach(var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Course</td>
+                    <td>@item.Price &euro;</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        <a asp-controller="Cart" asp-action="Remove"
+                           asp-route-id="@item.Id" class="btn btn-outline-danger">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
