@@ -32,6 +32,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Teachers" asp-action="Index">Teachers</a>
                         </li>
                     </ul>
+                    <ul class="navbar nav">
+                        <li class="nav-item">
+                            <a class="nav-right btn btn-outline-success" asp-controller="Cart" asp-action="Index">Cart: @(Context.Session.GetInt32("NumOfItemsInCart") ??  0)</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

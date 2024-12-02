@@ -1,5 +1,13 @@
 ﻿@model CartIndexViewModel
 
+@if(Model.Items.Count == 0)
+{ 
+    <div class="alert alert-primary" role="alert">
+        No items in cart!
+    </div>
+}
+else
+{ 
 <div class="row">
     <div class="col-lg-8">
         <table class="table table-hover">
@@ -9,20 +17,47 @@
                 <th>Quantity</th>
                 <th>Action</th>
             </tr>
-            @foreach(var item in Model.Items)
+            @foreach (var item in Model.Items)
             {
                 <tr>
                     <td>@item.Course</td>
                     <td>@item.Price &euro;</td>
-                    <td>@item.Quantity</td>
                     <td>
-                        <a asp-controller="Cart" asp-action="Remove"
-                           asp-route-id="@item.Id" class="btn btn-outline-danger">
-                            Remove
-                        </a>
+                        @item.Quantity
+                        <a class="btn btn-danger"
+                           asp-controller="Cart"
+                           asp-action="Remove"
+                           asp-route-id="@item.Id">-</a>
+                        <a class="btn btn-primary"
+                           asp-controller="Cart"
+                           asp-action="Add"
+                           asp-route-id="@item.Id">+</a>
+                    </td>
+                    <td>
+                        @item.Total &euro;
                     </td>
                 </tr>
             }
+            <tr>
+                <td>SubTotal:</td>
+                <td>@Model.SubTotal &euro;</td>
+            </tr>
+            <tr>
+                <td>Vat:</td>
+                <td>@Model.Vat %</td>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td>@Model.Total &euro;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><a class="btn btn-success">
+    Checkout
+</a></td>
+            </tr>
         </table>
     </div>
 </div>
+}
