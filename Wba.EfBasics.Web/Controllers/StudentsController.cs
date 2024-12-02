@@ -87,6 +87,8 @@ namespace Wba.EfBasics.Web.Controllers
                 return View(studentsAddViewModel);
             }
             //new student Added
+            //set tempData message
+            TempData["Message"] = "Student addedd succesfully!";
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]

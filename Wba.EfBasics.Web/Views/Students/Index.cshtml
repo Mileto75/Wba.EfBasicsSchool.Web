@@ -6,6 +6,12 @@
            class="btn btn-primary">Add</a>
     </div>
 </div>
+@if(TempData.ContainsKey("Message"))
+{ 
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
 <div class="row">
     @foreach (var student in Model.Students)
     {
